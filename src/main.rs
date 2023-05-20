@@ -1,29 +1,49 @@
 use std::io;
+use std::process;
+use std::env;
+use std::fs;
 fn main() {
     Login();
     Enabling();
-    let mut skuska = String::new();
-    println!("Zadaj cislo interakcie: ");
-    println!("1 - Dátum narodenia");
-    println!("2 - Výpis pozície");
-    println!("3 - Možnosť 3");
+    while true {
+        let mut skuska = String::new();
+        println!("Zadaj cislo interakcie: ");
+        println!("1 - Info o zamestnancoch");
+        println!("2 - Pridaj Zamestnanca");
+        println!("3 - Možnosť 3");
+        println!("4 - Exit");
 
 
-    io::stdin().read_line(&mut skuska).expect("Nepodarilo sa načítať riadok");
-    let c: i32 = skuska.trim().parse().expect("Nepodarilo sa previesť na číslo");
-    match c{
+        io::stdin().read_line(&mut skuska).expect("Nepodarilo sa načítať riadok");
+        let c: i32 = skuska.trim().parse().expect("Nepodarilo sa previesť na číslo");
 
-        1=>vypisZamest(),
-        _=>println!("Only one  digit allowed"),
+        match c{
+
+            1=>vypisZamest(),
+            // 2=>vypisZamest(),
+            4=>process::exit(0),
+
+
+            _=>println!("Only one  digit allowed"),
+        }
+
     }
+
+    
 
     fn Login(){
         let mut line = String::new();
         println!("Enter your name :");
         let b1 = std::io::stdin().read_line(&mut line);
-        println!("Hello , {}", line);
 
+        let contents = fs::read_to_string("src/hesla.txt")
+            .expect("Should have been able to read the file");
+        if line==contents{
+        }
+        else { return; }
     }
+
+
 
 
     fn Enabling(){
@@ -42,9 +62,10 @@ fn main() {
 
 
 
-
+        //spaghetti if statement xd
         if hladaj== "Janko"{
-            println!("Jankov vek je: {}",JANKO)
+            println!("Jankov vek je: {}",JANKO);
+            println!("")
         }
         else {
             if  hladaj=="Mirko"{
