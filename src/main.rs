@@ -21,13 +21,23 @@ fn main() {
         println!("{}",result);}
 
     fn vypisZamest(){
-        let mut start = String::new();
-        let start = start.trim_end();
-        println!("Enter name of employee :");
-        let b1 = std::io::stdin().read_line(& start);
+        let mut input = String::new();
+        println!("Zadaj meno zamestnanca:" );
+        io::stdin()
+            .read_line(&mut input)
+            .expect("Failed to read input.");
+        let hladaj = input.trim();
 
-        if start == "Janko"{
+
+
+
+        if hladaj== "Janko"{
             println!("Jankov vek je: {}",JANKO)
+        }
+        else {
+            if  hladaj=="Mirko"{println!("Mirkov vek je: {}",MIRKO) }
+            else { if  hladaj=="Marian" {println!("Marianov vek je: {}",MARIAN)}
+            else { if hladaj=="Michal" {println!("Michalov vek je: {}",MICHAL) } }}
         }
         //mena zamestnancov
         const NAME: &str = "Janko";
@@ -39,7 +49,7 @@ fn main() {
         //vek zamestnancov
         const JANKO: i32 = 33;
         const MIRKO: i32 = 28;
-        const MARIAN: i32 = 43;
+        const MARIAN: i32 = 49;
         const MICHAL: i32 = 22;
 
         // zoznam vekov zamestnancov
