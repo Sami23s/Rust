@@ -1,9 +1,21 @@
 use std::io;
 fn main() {
-    Enabling();
     Login();
+    Enabling();
+    let mut skuska = String::new();
+    println!("Zadaj cislo interakcie: ");
+    println!("1 - Dátum narodenia");
+    println!("2 - Výpis pozície");
+    println!("3 - Možnosť 3");
 
-    vypisZamest();
+
+    io::stdin().read_line(&mut skuska).expect("Nepodarilo sa načítať riadok");
+    let c: i32 = skuska.trim().parse().expect("Nepodarilo sa previesť na číslo");
+    match c{
+
+        1=>vypisZamest(),
+        _=>println!("Only one  digit allowed"),
+    }
 
     fn Login(){
         let mut line = String::new();
@@ -35,9 +47,13 @@ fn main() {
             println!("Jankov vek je: {}",JANKO)
         }
         else {
-            if  hladaj=="Mirko"{println!("Mirkov vek je: {}",MIRKO) }
-            else { if  hladaj=="Marian" {println!("Marianov vek je: {}",MARIAN)}
-            else { if hladaj=="Michal" {println!("Michalov vek je: {}",MICHAL) } }}
+            if  hladaj=="Mirko"{
+                println!("Mirkov vek je: {}",MIRKO) }
+            else {
+                if  hladaj=="Marian" {println!("Marianov vek je: {}",MARIAN)
+            }
+            else { if hladaj=="Michal" {println!("Michalov vek je: {}",MICHAL)
+            } }}
         }
         //mena zamestnancov
         const NAME: &str = "Janko";
@@ -60,7 +76,7 @@ fn main() {
       //  }
 
 
-    }
-}
+    }}
+
 
 
